@@ -43,6 +43,13 @@ def main(
     args_cli, _ = parser.parse_known_args()
     args_cli.enable_cameras = True
     args_cli.headless = headless
+    # Disable DLSS/NGX features that crash on non-RTX GPUs (e.g. A100)
+    args_cli.kit_args = (
+        "--/rtx/post/dlss/enabled=false "
+        "--/rtx/post/aa/op=1 "  # FXAA instead of DLSS
+        "--/rtx-transient/dlssg/enabled=false "
+        "--/ngx/enabled=false"
+    )
     app_launcher = AppLauncher(args_cli)
     simulation_app = app_launcher.app
 

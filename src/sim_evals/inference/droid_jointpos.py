@@ -45,10 +45,10 @@ class Client(InferenceClient):
             self.actions_from_chunk_completed = 0
             request_data = {
                 "observation/exterior_image_1_left": image_tools.resize_with_pad(
-                    curr_obs["right_image"], 224, 224
+                    curr_obs["right_image"], 180, 320
                 ),
                 "observation/wrist_image_left": image_tools.resize_with_pad(
-                    curr_obs["wrist_image"], 224, 224
+                    curr_obs["wrist_image"], 180, 320
                 ),
                 "observation/joint_position": curr_obs["joint_position"],
                 "observation/gripper_position": curr_obs["gripper_position"],
